@@ -89,3 +89,67 @@
   gap: 8px; 
   margin-right: 8px; 
 }
+.query-editor {
+  height: 30vh;
+  width: 182.5vh;
+  background-color: #fff;
+  resize: vertical;    
+  
+  min-height: 150px;   
+  max-height: 200px;   
+  
+  overflow-y: auto;
+
+}
+.ant-tabs-tab ant-tabs-tab-with-remove ant-tabs-tab-active {
+  background-color: pink;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  
+}
+.ant-tabs-card .ant-tabs-tab {
+  background: #f0f2f5 !important;
+  border-color: #d9d9d9 !important;
+  border-radius: 8px 8px 0 0 !important; /* Köşeleri yuvarlayalım */
+  transition: all 0.3s;
+}
+.ant-tabs-card .ant-tabs-tab-active {
+  background: #09013d !important; /* Örn: Mavi arka plan */
+  border-color: #ffff !important;
+}
+.ant-tabs-card .ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #ffffff !important;
+}
+/* 3. Tabların üzerine gelindiğinde (Hover durumu) */
+.ant-tabs-card .ant-tabs-tab:hover {
+  color: #40a9ff !important;
+}
+.ant-tabs-tab-remove {
+  color: #ff4d4f !important; /* Kırmızı kapatma butonu */
+}
+.query-tab{
+  background-color: #f0f2f5 !important; /* Tabların arka plan rengi */
+}
+.query-controls{
+  display: flex;
+  align-items: center;
+  gap: 8px; 
+  padding: 8px; 
+
+}
+.query-editor textarea {
+  width: 100%;
+  flex: 1;
+  resize: none;
+  border: none;
+}
+.btn-template {
+  height: 10vh ;
+  width: 100vh;
+  margin: 5px;
+  background: transparent
+}
+.input{
+  background-color: #fff;
+}

@@ -1,11 +1,23 @@
 import { Tabs } from 'antd';
 import type { TabsProps } from 'antd';
+import { useState } from 'react';
+import ButtonComponent from './ButtonComponent';
+import TemplateModal from './TemplateModal';
 
-const items: TabsProps['items'] = [
+
+
+function Sidebar() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const items: TabsProps['items'] = [
   {
     key: 'panel-1',
     label: 'Şablonlar',
-    children: 'Content of panel 1',
+    children: <div>
+        <div style={{ marginBottom: 16 }}>
+          <ButtonComponent className="btn-template" text="Şablon Ekle" onClick={() => setIsModalOpen(true)} />
+        </div>
+        
+      </div>,
   },
   {
     key: 'panel-2',
@@ -14,13 +26,12 @@ const items: TabsProps['items'] = [
   },
   
 ];
-
-function Sidebar() {
   return (
     
     <aside className="sidebar">
       <h3>Query Runner</h3>
       <Tabs className="sidebar-tabs" tabPosition="top" defaultActiveKey="panel-1" items={items} />
+      <TemplateModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </aside>
   );
 }

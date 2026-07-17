@@ -1,7 +1,7 @@
 import './styles/app-shell.scss';
 import Sidebar from './components/Sidebar';
-import Db_dropdown from './components/db_dropdown';
-
+import Db_dropdown from './components/Db_dropdown';
+import Query_tab from './components/Query_tab';
 function App() {
   return (
     <div className="app-shell">
@@ -14,11 +14,16 @@ function App() {
           <div className='UserInfo'>
             <h5>Kullanıcı : </h5><span>User 1</span>
           </div>
+          
         </section>
-        
-        <textarea className="query-editor" placeholder="Write your SQL query here..." />
-        
-        
+        <section className="query-tab">
+       <div className="query-tab-container">
+          <Query_tab />
+          
+        </div>
+        </section>
+       
+
       </main>
     </div>
   );
