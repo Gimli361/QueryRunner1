@@ -2,12 +2,23 @@ import React, { useRef, useState } from 'react';
 import { Tabs } from 'antd';
 import ButtonComponent from './ButtonComponent';
 import NumberInput from './NumberInput';
+import './QueryTab.scss';
 
 type TargetKey = React.MouseEvent | React.KeyboardEvent | string;
 
-const QueryEditor: React.FC = () => (
+interface QueryEditorProps {
+  value: string;
+  onChange: (value: string) => void;
+}
+
+const QueryEditor: React.FC<QueryEditorProps> = ({ value, onChange }) => (
   <div className="Query-Area">
-    <textarea className="query-editor" placeholder="" />
+    <textarea
+      className="query-editor"
+      placeholder="SQL Sorgunuzu buraya yazın..."
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+    />
     <div className="query-controls">
       <ButtonComponent text="Run Query" />
       <h5>Limit : </h5>
@@ -16,14 +27,50 @@ const QueryEditor: React.FC = () => (
   </div>
 );
 
-const initialTabs = [{ label: 'Sorgu 1', key: '1' }];
+interface TabItem {
+  label: string;
+  key: string;
+  query: string;
+}
 
-const query_tab: React.FC = () => {
+const initialTabs: TabItem[] = [{ label: 'Sorgu 1', key: '1', query: '' }];
+
+interface QueryTabProps {
+  selectedQuery?: string;
+}
+
+const query_tab: React.FC<QueryTabProps> = ({ selectedQuery }) => {
   const [activeKey, setActiveKey] = useState(initialTabs[0].key);
-  const [tabs, setTabs] = useState(initialTabs);
+  const [tabs, setTabs] = useState<TabItem[]>(initialTabs);
   const newTabIndex = useRef(0);
 
-  const items = tabs.map((tab) => ({ ...tab, children: <QueryEditor /> }));
+  // Dışarıdan yeni bir şablon seçildiğinde aktif olan sekmenin query değerini güncelle
+  React.useEffect(() => {
+    if (selectedQuery !== undefined && selectedQuery !== '') {
+      setTabs((prevTabs) =>
+        prevTabs.map((tab) =>
+          tab.key === activeKey ? { ...tab, query: selectedQuery } : tab
+        )
+      );
+    }
+  }, [selectedQuery]);
+
+  const handleQueryChange = (key: string, newQuery: string) => {
+    setTabs((prevTabs) =>
+      prevTabs.map((tab) => (tab.key === key ? { ...tab, query: newQuery } : tab))
+    );
+  };
+
+  const items = tabs.map((tab) => ({
+    label: tab.label,
+    key: tab.key,
+    children: (
+      <QueryEditor
+        value={tab.query}
+        onChange={(val) => handleQueryChange(tab.key, val)}
+      />
+    ),
+  }));
 
   const onChange = (newActiveKey: string) => {
     setActiveKey(newActiveKey);
@@ -31,7 +78,10 @@ const query_tab: React.FC = () => {
 
   const add = () => {
     const newActiveKey = `newTab${newTabIndex.current++}`;
-    setTabs([...tabs, { label: `Sorgu ${tabs.length + 1}`, key: newActiveKey }]);
+    setTabs([
+      ...tabs,
+      { label: `Sorgu ${tabs.length + 1}`, key: newActiveKey, query: '' },
+    ]);
     setActiveKey(newActiveKey);
   };
 

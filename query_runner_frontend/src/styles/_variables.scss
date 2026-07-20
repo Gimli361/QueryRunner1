@@ -1,0 +1,20 @@
+// Kurumsal renk paleti — tüm stil dosyaları renkleri buradan alır.
+$color-primary: #09013d;
+$color-surface: #f0f2f5;
+$color-border: #d9d9d9;
+$color-white: #fff;
+$color-text-dark: #000;
+$color-danger: #ff4d4f;
+$color-link-hover: #40a9ff;
+
+// Şablon kartları ve koyu tema için yeni değişkenler
+$color-card-bg: rgba(255, 255, 255, 0.05);
+$color-card-bg-hover: rgba(255, 255, 255, 0.1);
+$color-card-border: rgba(255, 255, 255, 0.12);
+$color-card-border-hover: #1890ff;
+$color-text-secondary: rgba(255, 255, 255, 0.6);
+$color-tag-personal-bg: rgba(82, 196, 26, 0.15);
+$color-tag-personal-text: #73d13d;
+$color-tag-team-bg: rgba(24, 144, 255, 0.15);
+$color-tag-team-text: #40a9ff;
+

@@ -1,0 +1,27 @@
+@use 'variables' as *;
+
+// Ant Design bileşenlerine yapılan global müdahaleler.
+// Sadece üçüncü parti override'lar burada durur; kendi sınıflarımız burada tanımlanmaz.
+.ant-tabs-card .ant-tabs-tab {
+  background: $color-surface !important;
+  border-color: $color-border !important;
+  border-radius: 8px 8px 0 0 !important;
+  transition: all 0.3s;
+}
+
+.ant-tabs-card .ant-tabs-tab-active {
+  background: $color-primary !important;
+  border-color: $color-white !important;
+}
+
+.ant-tabs-card .ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: $color-white !important;
+}
+
+.ant-tabs-card .ant-tabs-tab:hover {
+  color: $color-link-hover !important;
+}
+
+.ant-tabs-tab-remove {
+  color: $color-danger !important;
+}

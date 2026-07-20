@@ -1,0 +1,20 @@
+@use 'variables' as *;
+.body {
+  font-family: 'Google Sans', sans-serif;
+  
+}
+.input { 
+  background-color: $color-white;
+  border: 1px solid $color-primary;
+  width: 99%;
+  height: 25px;
+  color: $color-text-dark;
+}
+.textarea {
+  background-color: $color-white;
+  border: 1px solid $color-primary;
+  height: 100px;
+  width: 100%;
+  color: $color-text-dark;
+  font-family: 'Google Sans', sans-serif;
+}
