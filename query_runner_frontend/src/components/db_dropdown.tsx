@@ -51,7 +51,7 @@ const objectStyles: DropdownProps['styles'] = {
   },
 };
 
-const Db_dropdown: React.FC = () => {
+const Db_Dropdown: React.FC = () => {
   const { styles } = useStyles();
   const [selectedKey, setSelectedKey] = React.useState<string>();
 
@@ -86,4 +86,4 @@ const Db_dropdown: React.FC = () => {
   );
 };
 
-export default Db_dropdown;
+export default Db_Dropdown;

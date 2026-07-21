@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Tag, Button, Tooltip, Flex } from 'antd';
 import { PlusOutlined, UserOutlined, TeamOutlined, DeleteOutlined, PlayCircleOutlined } from '@ant-design/icons';
-import './TemplateCard.scss';
+import './Template_Card.scss';
 
 export interface Template {
   id: string;

@@ -11,10 +11,10 @@
   box-sizing: border-box;
   overflow: hidden;
   border-right: 1px solid rgba($color-white, 0.08);
-  border-radius: 10px;
-;
+  border-radius: 10px; // <-- Fazlalık noktalı virgül kaldırıldı
 
   .sidebar-header {
+    flex-shrink: 0;
     padding: 16px 20px;
     border-bottom: 1px solid rgba($color-white, 0.08);
 
@@ -24,19 +24,20 @@
       font-weight: 700;
       color: $color-white;
       letter-spacing: 0.5px;
-      background: linear-gradient(135deg, #fff 0%, rgba(#fff, 0.7) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      background-color: transparent;
     }
   }
 
   .sidebar-tabs {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+    flex: 1 1 0% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    min-height: 0 !important;
+    height: 0 !important; // Force flex item to respect parent bounds
 
     .ant-tabs-nav {
+      flex-shrink: 0 !important;
       margin: 0 !important;
       padding: 0 16px;
       border-bottom: 1px solid rgba($color-white, 0.08);
@@ -46,20 +47,26 @@
       }
     }
 
-    .ant-tabs-content-holder {
-      flex: 1;
-      overflow: hidden;
+    .ant-tabs-body-holder {
+      flex: 1 1 0% !important;
+      display: flex !important;
+      flex-direction: column !important;
+      overflow: hidden !important;
+      min-height: 0 !important;
     }
 
-    .ant-tabs-content,
-    .ant-tabs-tabpane {
-      height: 100%;
+    .ant-tabs-body {
+      flex: 1 1 0% !important;
+      display: flex !important;
+      flex-direction: column !important;
+      min-height: 0 !important;
+      height: 100% !important;
     }
 
     .ant-tabs-tab {
       padding: 12px 4px !important;
       margin: 0 12px 0 0 !important;
-      
+
       .ant-tabs-tab-btn {
         color: rgba($color-white, 0.55);
         font-size: 13px;
@@ -84,42 +91,64 @@
       height: 2px !important;
     }
 
-    .ant-tabs-tabpane {
-      padding: 16px;
-      box-sizing: border-box;
-      overflow: hidden;
+    .ant-tabs-content {
+      flex: 1 1 0% !important;
+      display: flex !important;
+      flex-direction: column !important;
+      padding: 16px !important;
+      box-sizing: border-box !important;
+      overflow: hidden !important;
+      min-height: 0 !important;
+      height: 0 !important; // Force bounded height for scroll
+
+      &.ant-tabs-content-hidden {
+        display: none !important;
+      }
     }
   }
 }
 
 .template-list-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  gap: 16px;
-  overflow: hidden;
+  flex: 1 1 0% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+  overflow: hidden !important;
+  min-height: 0 !important;
+  height: 0 !important;
 }
 
 .template-list {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  flex: 1 1 0% !important;
+  display: flex !important;
+  flex-direction: column !important;
   gap: 12px;
-  overflow-y: auto;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  min-height: 0 !important;
+  height: 0 !important;
   padding-right: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba($color-white, 0.35) transparent;
+
+  .template-card {
+    flex-shrink: 0 !important; // Prevent cards from collapsing
+    margin-bottom: 0 !important;
+    margin: 2.5px 0 !important;
+  }
 
   &::-webkit-scrollbar {
-    width: 4px;
+    width: 6px;
   }
   &::-webkit-scrollbar-track {
     background: transparent;
   }
   &::-webkit-scrollbar-thumb {
-    background: rgba($color-white, 0.15);
+    background: rgba($color-white, 0.35);
     border-radius: 4px;
   }
   &::-webkit-scrollbar-thumb:hover {
-    background: rgba($color-white, 0.3);
+    background: rgba($color-white, 0.55);
   }
 }
 

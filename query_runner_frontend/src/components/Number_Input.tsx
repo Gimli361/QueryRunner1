@@ -6,6 +6,6 @@ const onChange: InputNumberProps['onChange'] = (value) => {
   console.log('changed', value);
 };
 
-const NumberInput: React.FC = () => <InputNumber min={1}  defaultValue={1000} onChange={onChange} />;
+const Number_Input: React.FC = () => <InputNumber min={1}  defaultValue={1000} onChange={onChange} />;
 
-export default NumberInput;
+export default Number_Input;

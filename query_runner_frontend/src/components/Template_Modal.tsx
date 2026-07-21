@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Modal, Input, Space, Typography } from 'antd';
-import SegmentedItem from './SegmentedItem';
-import type { Visibility } from './SegmentedItem';
-import type { Template } from './TemplateCard';
+import SegmentedItem from './Segmented_Item';
+import type { Visibility } from './Segmented_Item';
+import type { Template } from './Template_Card';
 
 const { Text } = Typography;
 

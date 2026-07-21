@@ -8,7 +8,7 @@ interface CustomButtonProps extends ButtonProps {
   text?: string; // İster text prop'u ile yazı gönderebilirsin
 }
 
-const ButtonComponent: React.FC<CustomButtonProps> = ({ 
+const Button_Component: React.FC<CustomButtonProps> = ({ 
   text, 
   children, 
   type = "primary", // Varsayılan olarak primary (mavi) olsun
@@ -21,4 +21,4 @@ const ButtonComponent: React.FC<CustomButtonProps> = ({
   </Flex>
 );
 
-export default ButtonComponent;
+export default Button_Component;

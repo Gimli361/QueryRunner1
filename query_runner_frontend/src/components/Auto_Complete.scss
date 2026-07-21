@@ -1,0 +1,68 @@
+@use '../styles/variables' as *;
+
+.sql-autocomplete-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.sql-autocomplete__list {
+  position: absolute;
+  z-index: 1000;
+  margin: 4px 0 0;
+  padding: 4px;
+  min-width: 250px;
+  max-width: 380px;
+  max-height: 240px;
+  overflow-y: auto;
+  list-style: none;
+  border: 1px solid;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    user-select: none;
+    transition: background-color 0.1s ease;
+
+    .sql-autocomplete__left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .sql-autocomplete__icon {
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+    }
+
+    .sql-autocomplete__value {
+      font-family: 'Consolas', 'Monaco', 'Menlo', monospace;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .sql-autocomplete__detail {
+      font-size: 11px;
+      font-style: italic;
+    }
+
+    .sql-autocomplete__tag {
+      margin-inline-end: 0;
+      font-size: 11px;
+      line-height: 18px;
+      border-radius: 4px;
+    }
+  }
+}

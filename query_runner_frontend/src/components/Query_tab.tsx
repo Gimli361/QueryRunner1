@@ -1,8 +1,9 @@
 import React, { useRef, useState } from 'react';
 import { Tabs } from 'antd';
-import ButtonComponent from './ButtonComponent';
-import NumberInput from './NumberInput';
-import './QueryTab.scss';
+import ButtonComponent from './Button_Component';
+import NumberInput from './Number_Input';
+import './Query_Tab.scss';
+import Auto_Complete from './Auto_Complete';
 
 type TargetKey = React.MouseEvent | React.KeyboardEvent | string;
 
@@ -13,11 +14,11 @@ interface QueryEditorProps {
 
 const QueryEditor: React.FC<QueryEditorProps> = ({ value, onChange }) => (
   <div className="Query-Area">
-    <textarea
+    <Auto_Complete
       className="query-editor"
       placeholder="SQL Sorgunuzu buraya yazın..."
       value={value}
-      onChange={(e) => onChange(e.target.value)}
+      onChange={onChange}
     />
     <div className="query-controls">
       <ButtonComponent text="Run Query" />
@@ -39,7 +40,7 @@ interface QueryTabProps {
   selectedQuery?: string;
 }
 
-const query_tab: React.FC<QueryTabProps> = ({ selectedQuery }) => {
+const Query_Tab: React.FC<QueryTabProps> = ({ selectedQuery }) => {
   const [activeKey, setActiveKey] = useState(initialTabs[0].key);
   const [tabs, setTabs] = useState<TabItem[]>(initialTabs);
   const newTabIndex = useRef(0);
@@ -127,4 +128,4 @@ const query_tab: React.FC<QueryTabProps> = ({ selectedQuery }) => {
   );
 };
 
-export default query_tab;
+export default Query_Tab;

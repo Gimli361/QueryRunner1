@@ -1,9 +1,9 @@
 import { Tabs, App } from 'antd';
 import type { TabsProps } from 'antd';
 import { useState } from 'react';
-import TemplateModal from './TemplateModal';
-import TemplateCard from './TemplateCard';
-import type { Template } from './TemplateCard';
+import TemplateModal from './Template_Modal';
+import TemplateCard from './Template_Card';
+import type { Template } from './Template_Card';
 import './Sidebar.scss';
 
 const initialTemplates: Template[] = [
@@ -32,6 +32,36 @@ ORDER BY total_revenue DESC;`,
   },
   {
     id: '3',
+    name: 'Sistem Performans Raporu',
+    description: 'Sunucu yanıt süreleri, CPU kullanımı ve veri tabanı gecikme raporları.',
+    visibility: 'personal',
+    query: 'SELECT server_id, avg_response_time, cpu_usage, latency, checked_at FROM system_metrics ORDER BY checked_at DESC LIMIT 50;',
+  },
+  {
+    id: '4',
+    name: 'Tüm Aktif Kullanıcılar',
+    description: 'Son 30 gün içerisinde giriş yapmış, e-posta onaylı tüm kullanıcıların listesi.',
+    visibility: 'personal',
+    query: 'SELECT id, username, email, created_at FROM users WHERE is_active = true AND last_login >= NOW() - INTERVAL \'30 days\';',
+  },
+  {
+    id: '5',
+    name: 'Haftalık Satış Analizi',
+    description: 'Kategori bazında haftalık sipariş adedi, toplam ciro ve ortalama sepet tutarı.',
+    visibility: 'team',
+    query: `SELECT 
+  c.category_name,
+  COUNT(o.id) AS total_orders,
+  SUM(o.total_amount) AS total_revenue,
+  AVG(o.total_amount) AS avg_order_value
+FROM orders o
+JOIN categories c ON o.category_id = c.id
+WHERE o.created_at >= NOW() - INTERVAL '7 days'
+GROUP BY c.category_name
+ORDER BY total_revenue DESC;`,
+  },
+  {
+    id: '6',
     name: 'Sistem Performans Raporu',
     description: 'Sunucu yanıt süreleri, CPU kullanımı ve veri tabanı gecikme raporları.',
     visibility: 'personal',
